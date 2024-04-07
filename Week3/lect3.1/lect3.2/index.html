@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Note that here the fetch and .json both are async functions and thus they require the promise fulfillment
+        /*function Animaldata(){
+            const ans = fetch("https://fakerapi.it/api/v1/persons")
+            .then((hello)=>{
+                const ans2 = hello.json()
+                ans2.then(()=>{
+                    console.log(ans2);
+                })
+            })             
+            
+        }*/
+        //Async await syntax 
+        async function Animaldata(){
+            const ans = await fetch("https://fakerapi.it/api/v1/persons");
+            const data = await ans.json();
+            console.log(data);
+        }
+    </script>
+    <button onclick="Animaldata()">Get animal data</button>
+</body>
+</html>

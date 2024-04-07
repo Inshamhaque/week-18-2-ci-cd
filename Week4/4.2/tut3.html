@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Title" id="title">
+    <br><br>
+    <input type="text" placeholder="Description" id="description">
+    <br><br>
+    <button onclick="addTodo()">Add Todo</button>
+    <div id="todos"></div>
+    <script>
+        let oldtodo = [];
+        let todostate = [];
+        let globalId = 0;
+        function addTodo(){
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            oldtodo = [...todostate];
+            todostate.push({
+                id: globalId++,
+                title : title ,
+                description : description
+            });
+            document.getElementById("title").value= ' ';
+            document.getElementById("description").value = ' ';
+            updatetodo();
+        }
+        function updatetodo(newTodo){
+            const parent = document.getElementById("todos");
+            todostate.forEach(todo=>{
+                const child = document.createElement("div");
+                child.innerHTML = `
+                <h3>${todo.title}</h3>
+                <p>${todo.description}</p>
+                <button>Mark as Done</button>`;
+                parent.appendChild(child);
+            });             
+        }
+   
+    </script>
+</body>
+</html>

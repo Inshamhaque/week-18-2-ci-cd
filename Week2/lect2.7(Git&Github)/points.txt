@@ -1,0 +1,28 @@
+1. Version Control System -> collab wit other devs
+2. Centralized VCS and Distributed VCS 
+3. Git is a distributed version control system (DVCS)
+- Everyone has the entire code base on their local machine, working from their own copy of
+the repository. This means that you can work offline as much as possible. You only need to
+4. Use can use git without Github but not github without git
+7. Github is a public web hosting service for projects that u made and stored on git . cloud based
+8. Git is a local repository for storing the projects . locally on computer
+TERMS  
+1. Staging area 
+2. Working Directory 
+3. push
+4. pull
+5. Blob -> Binary Large OBject -> files in git are addressed by their SHA1# 
+6. Trees -> represents a directory 
+Commands 
+1. Clone
+2. Add
+3. Commit
+4. push
+5. pull
+Merging conflicts -:
+git log --merge : produce list of commands that are causing conflicts
+git diff:
+git checkout : used to undo the changes made to the files
+git reset --mixed : undo changes to working directory and staging area
+git merge --abort : exiting the merge process and return to the state before mErging
+git reset : to reset the conflicted files to their original states 

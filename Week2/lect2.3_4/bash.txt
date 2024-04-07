@@ -1,0 +1,12 @@
+Unknown Bash COMMANDS:-
+1. to recursivly display file in a directory following sub-directories -> use ls -lR (here R stands for Recursively in the file trere)
+2. moving a file from one place to other -> mv file_name directory_adress
+3. copying a file -> cp file-name directory-name , now to copy a directory use cp -r directory1 directory2
+4. Deleting  a file -> rm file-name 
+5. Delete a dir -> rm -r dir_name
+6. changing the permissions -> permissions r of the format users-group-others & of type rwx so, use chmod u/g/o,+/-,r/w/x file_name
+eg chmod u+x file.txt & for directory use chmod -r instead ... 
+7.to read first 10 lines of file -> head file_name && to read last 10 lines of file -> tail file_name 
+8. Pipe operator 
+9. wc file_name -> line count, word count, char count
+10. Grep command -> to find the number of times a word occurs... grep -c , grep -h , grep -w  

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>This is a para</p>
+    <div id="type1">This is first div</div>
+    <div class="type2">This is second div</div>
+    <p class="demo"></p>
+    <div class="typ3">
+        <p id="1">Hello</p>
+        <p id="2">What is up</p>
+    </div>
+    <script>
+        //Finding HTML elements 
+        var x = document.getElementById("type1");
+        var doc = document.getElementsByClassName("demo");
+        var divs = document.querySelectorAll('div.');
+        divs.forEach(block=>block.style.backgroundColor="red");
+        var nested = document.getElementsByClassName("typ3");
+        var p = nested.getElementById("1");
+    </script>
+
+</body>
+</html>

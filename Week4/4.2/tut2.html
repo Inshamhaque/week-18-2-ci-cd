@@ -1,0 +1,60 @@
+<!-- Concept of states in the pre-React Days -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Title" id="title">
+    <br><br>
+    <input type="text" placeholder="Description" id="description">
+    <br><br>
+    <!-- <button onclick="Todo()">Add Todo</button> -->
+    <div id="todos"></div>
+    <script>
+        let globalID = 0;
+        //creating a child
+        function createchild(title,description,id){
+            var child = document.createElement("div");
+            child.setAttribute("id",`todo-${id}`);
+            var gchild1 = document.createElement("div");
+            gchild1.innerHTML = title;
+            var gchild2 = document.createElement("div");
+            gchild2.innerHTML = description;
+            var gchild3 = document.createElement("button");
+            gchild3.innerHTML = "Mark as Done";
+            gchild3.onclick  = function() {markdone(id);}
+            child.appendChild(gchild1);
+            child.appendChild(gchild2);
+            child.appendChild(gchild3);
+            return child;
+        }
+        //Updating DOM according to the state 
+        function updateDOM(state){
+            const parent = document.getElementById("todos");
+            parent.innerHTML = "";
+            for(let i=0;i<state.length;i++){
+                const child = createchild(state[i].title,state[i].description,state[i].id);
+                parent.appendChild(child);
+            }
+        }
+        //Calling the update dom on its own after every 5 second 
+        window.setInterval(async () => {
+            try {
+                const res = await fetch("https://sum-server.100xdevs.com/todos");
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                const json = await res.json();
+                updateDOM(json.todos);
+            } catch (error) {
+                console.error("Failed to fetch todos:", error); // Changed to console.error for better error visibility
+            }
+        }, 500);
+        
+       
+    </script>
+</body>
+</html>

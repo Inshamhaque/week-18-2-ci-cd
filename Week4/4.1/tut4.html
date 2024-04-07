@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BASIC INTEREST CALCULATOR</h1>
+    <input type="number" placeholder="Principal" id="Principal">
+    <br>
+    <input type="number" placeholder="Rate" id="Rate">
+    <br>
+    <input type="number" placeholder="Time" id="Time">
+    <br>
+    <button onclick="calculate()">Calculate</button>
+    <p id="return"></p>
+    <script>
+        async function calculate() {
+            let principal = document.getElementById("Principal").value;
+            if (principal === "") {
+                alert("Please enter the Principal amount");
+                return; // Stop the function if principal is not entered
+            }
+            let rate = document.getElementById("Rate").value;
+            if (rate === "") {
+                alert("Please enter the Rate");
+                return; // Stop the function if rate is not entered
+            }
+            let time = document.getElementById("Time").value;
+            if (time === "") {
+                alert("Please enter the tenure");
+                return; // Stop the function if time is not entered
+            }
+    
+            try {
+                const response = await fetch("http://localhost:3000/interest?principal=" + principal + "&rate=" + rate + "&time=" + time);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`); // Check if response was ok (status in the range 200-299)
+                }
+                const data = await response.json(); // Parse the JSON from the response
+                // Assuming the JSON structure is something like { interest: 100 }
+                document.getElementById("return").innerHTML = "The calculated interest is: " + data.interest+" & Amount is: "+data.amount;
+            } catch (error) {
+                console.error("Fetch Error: ", error);
+                document.getElementById("return").innerHTML = "Error calculating interest. Please try again.";
+            }
+        }
+    </script>    
+</body>
+</html>
