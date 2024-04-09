@@ -51,7 +51,6 @@ function Show(){
     <div>
       {iseven?"it is even":null}
     </div>
-    
   )
 }
 export default App;
