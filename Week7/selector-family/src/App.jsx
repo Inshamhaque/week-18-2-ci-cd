@@ -3,17 +3,24 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
+import {RecoilRoot, useRecoilState} from "recoil";
+import { todoAtomFamily } from './Todoatom';
 function App() {
   return(
-    <Todo></Todo>
+    <RecoilRoot>
+      <Todo/>
+    </RecoilRoot>
   )
 }
-async function Todo(){
-    const res = await axios.get("https://sum-server.100xdevs.com/todos?id=1");
-    console.log(res.data.todos);
-    return(
-      <div>hello</div>
-    )
+function Todo(id){
+  const [todo,setTodo] = useRecoilState(todoAtomFamily(id));
+  return(
+    <>
+      {todo.title}
+      {todo.description}
+      <br />
+    </>
+  )
 }
 
 export default App
