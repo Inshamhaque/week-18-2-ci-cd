@@ -1,5 +1,4 @@
 import axios from "axios";
-import {atom} from "recoil";
 import {atomFamily,selectorFamily} from "recoil"
 export const todoAtomFamily = atomFamily({
     key : "todoAtomFamily",
