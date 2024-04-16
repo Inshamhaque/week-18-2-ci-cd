@@ -6,7 +6,8 @@ import { useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
-  return <RecoilRoot>
+  return
+ <RecoilRoot>
     <MainApp />
   </RecoilRoot>
 }
@@ -18,12 +19,10 @@ function MainApp() {
   return (
     <>
       <button>Home</button>
-      
       <button>My network ({networkCount.networks >= 100 ? "99+" : networkCount.network})</button>
       <button>Jobs {networkCount.jobs}</button>
       <button>Messaging ({networkCount.messaging})</button>
       <button>Notifications ({networkCount.notifications})</button>
-
       <button>Me ({totalNotificationCount})</button>
     </>
   )
