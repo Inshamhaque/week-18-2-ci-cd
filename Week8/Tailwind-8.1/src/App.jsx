@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { RevenueCard } from './Components/RevenueCard'
+import { RevenueCardGrid } from './Components/RevenueCardGrid'
 import './App.css'
+import { Header } from './Components/Header'
+import { Table } from './Components/Table'
 
 function App() {
   return(
-    <div className='grid grid-cols-9 '>
-      <div className='col-span-3 bg-slate-800 md:bg-transparent'>hello</div>
-      <div className='col-span-3 bg-slate-500	'>hello</div>
-      <div>hello</div>
+    <div>
+      <Header />
+      <RevenueCardGrid />
+      <Table />
     </div>
   )
 }
