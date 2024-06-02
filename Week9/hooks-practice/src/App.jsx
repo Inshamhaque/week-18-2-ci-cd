@@ -65,19 +65,66 @@ import e from 'cors'
 //     </div>
 //   )
 // }
-function useMousePointer(){
-  const [coord,setcoords] = useState({ x:0, y:0});
-  const handleMouseMove= (e) =>{
-    setcoords({x:e.clientX,y:e.clientY});
-  }
-  window.addEventListener('mousemove',handleMouseMove);
-  return coord;
+
+// function useMousePointer(){
+//   const [coord,setcoords] = useState({ x:0, y:0});
+//   const handleMouseMove= (e) =>{
+//     setcoords({x:e.clientX,y:e.clientY});
+//   }
+//   window.addEventListener('mousemove',handleMouseMove);
+//   return coord;
+// }
+// function App(){
+//   const position = useMousePointer();
+//   return (
+//     <div>Mouse location is {position.x},{position.y}</div>
+//   )
+// }
+
+// function useInterval(callback,delay){
+//   useEffect(()=>{
+//     const interval = setInterval(()=>{
+//       callback();
+//     },delay)
+//     return ()=>{
+//       clearInterval(interval);
+//     }
+//   },[])
+// }
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   useInterval(() => {
+//     setCount(c => c + 1);
+//   }, 1000)
+
+//   return (
+//     <>
+//       Timer is at {count}
+//     </>
+//   )
+// }
+
+function useDebounce(inputValue,delay){
+  const [DebouncedValue,setDebouncedValue] = useState("");
+  useEffect(()=>{
+    const handler = setInterval(()=>{
+      setDebouncedValue(inputValue);
+    },delay)
+    return ()=>{
+      clearInterval(handler);
+    }
+  },[inputValue])
+  return DebouncedValue;
 }
 function App(){
-  const position = useMousePointer();
-  return (
-    <div>Mouse location is {position.x},{position.y}</div>
+  const[input,setInput] = useState("");
+  const debouncedValue = useDebounce(input,5000);
+  return(
+    <div>
+      Debounced value is {debouncedValue}
+      <input onChange = {(e)=>setInput(e.target.value)} type="text" name="" id="" />
+    </div>
   )
 }
-
 export default App
