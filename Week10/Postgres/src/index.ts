@@ -36,7 +36,7 @@ async function insertIntoTable(username : string, email : string, password : str
         await client.end();
     }
 }
-//insertIntoTable("Rahul Gandhi","Rahulbaba@gmail.com","6996");
+insertIntoTable("Rahul Gandhi","Rahulbaba@gmail.com","6996");
 //RETREIVING 
 async function getUser(email:string){
     try{
@@ -60,4 +60,4 @@ async function getUser(email:string){
         await client.end();
     }
 }
-getUser("haqueinsham@gmail.com");
+// getUser("haqueinsham@gmail.com");
